@@ -40,8 +40,12 @@ const Players = () => {
 
   return (
     <>
-      <Search setQuery={setQuery} />
-      {loading ? <p>Loading</p> : <List headers={header} data={players} />}
+      <Search query={query} setQuery={setQuery} />
+      {loading ? (
+        <div className="h-72 w-full animate-pulse bg-slate-50 rounded-xl" />
+      ) : (
+        <List headers={header} data={players} />
+      )}
     </>
   );
 };
