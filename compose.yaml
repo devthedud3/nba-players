@@ -1,0 +1,17 @@
+services:
+  app:
+    container_name: nba-app
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    command: npm run dev
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
