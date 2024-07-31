@@ -21,8 +21,7 @@ export async function GET(
 
     // Populate the data array with player information
     for (let i = 8; i < playerElements.length; i++) {
-      const [first, last] = playerElements[i].textContent.split(" ");
-      const player: any = { first_name: first, last_name: last };
+      const player: any = { name: playerElements[i].textContent };
 
       // Add additional properties based on playerData
       const playerInfoIndex = (i - 8) * 7; // Index for playerData
