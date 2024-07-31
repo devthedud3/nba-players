@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
+import { SearchProvider } from "@/Context/SearchContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex min-h-screen`}>
-        <Sidebar />
-        <div className="flex-1">
-          <Header />
-          {children}
-        </div>
+        <SearchProvider>
+          <Sidebar />
+          <div className="flex-1">
+            <Header />
+            {children}
+          </div>
+        </SearchProvider>
       </body>
     </html>
   );
