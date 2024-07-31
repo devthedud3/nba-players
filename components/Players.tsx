@@ -4,8 +4,7 @@ import List from "./List";
 import Search from "./Search";
 
 const header = [
-  "First_Name",
-  "Last_Name",
+  "Name",
   "From",
   "To",
   "Position",
@@ -42,7 +41,14 @@ const Players = () => {
     <>
       <Search query={query} setQuery={setQuery} />
       {loading ? (
-        <div className="h-72 w-full animate-pulse bg-slate-50 rounded-xl" />
+        <div className="w-full space-y-4">
+          {[...Array(12)].map((_, index) => (
+            <div
+              key={index}
+              className="h-6 w-full animate-pulse bg-slate-100 rounded-xl"
+            />
+          ))}
+        </div>
       ) : (
         <List headers={header} data={players} />
       )}
