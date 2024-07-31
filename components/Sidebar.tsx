@@ -1,4 +1,4 @@
-import { AppIcon, ShoppingBasketIcon } from "@/assets/svg-icons";
+import { AppIcon, ShoppingBasketIcon } from "@/assets/AppIcons";
 import Link from "next/link";
 import React from "react";
 
@@ -8,8 +8,8 @@ const options = "players_history_stats_schedule_news".split("_");
 
 export const Sidebar = (props: Props) => {
   return (
-    <aside className="container container-p border">
-      <div className="flex items-center gap-2 mt-6">
+    <aside className=" container-p border">
+      <div className="flex items-center gap-2 mt-3">
         <ShoppingBasketIcon />
         <span className="text-xl font-bold">Statistics Hub</span>
       </div>
