@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --background: white;
 }
 
 body {
@@ -16,5 +18,9 @@ max-width:  1770px;
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .container-p {
+    padding: 1rem 1.5rem;
   }
 }
