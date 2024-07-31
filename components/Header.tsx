@@ -1,6 +1,8 @@
-import { ShoppingBasketIcon } from "@/assets/svg-icons";
+import { ShoppingBasketIcon } from "@/assets/AppIcons";
+
 import Link from "next/link";
 import React from "react";
+import SearchBar from "./SearchBar";
 
 type Props = {};
 
@@ -11,7 +13,7 @@ export default function Header({}: Props) {
         <ShoppingBasketIcon />
         <span className="text-xl font-bold">Stats Corner</span>
       </Link>
-      <div>search bar going here</div>
+      <SearchBar icon />
     </header>
   );
 }
