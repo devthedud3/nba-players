@@ -61,7 +61,7 @@ const List = <T extends object>({ headers, data }: ListProps<T>) => {
   );
 
   return (
-    <table className="text-xs text-left border w-full">
+    <table className="text-[12px] text-left border w-full">
       <thead>
         <tr>{renderedHeaders}</tr>
       </thead>
