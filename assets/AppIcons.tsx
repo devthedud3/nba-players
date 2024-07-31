@@ -1,0 +1,50 @@
+import { CiUser, CiTrophy, CiCalendarDate } from "react-icons/ci";
+import { GoXCircleFill } from "react-icons/go";
+import {
+  IoStatsChartOutline,
+  IoNewspaperOutline,
+  IoSearch,
+} from "react-icons/io5";
+
+export const ShoppingBasketIcon = (props: any) => {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      color="red"
+    >
+      <path d="m15 11-1 9" />
+      <path d="m19 11-4-7" />
+      <path d="M2 11h20" />
+      <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
+      <path d="M4.5 15.5h15" />
+      <path d="m5 11 4-7" />
+      <path d="m9 11 1 9" />
+    </svg>
+  );
+};
+
+type AppIconProps = {
+  icon: string;
+  props?: any;
+};
+
+export const AppIcon = ({ icon, ...props }: AppIconProps) => {
+  if (icon === "players") return <CiUser size={25} {...props} />;
+  if (icon === "history") return <CiTrophy size={25} {...props} />;
+  if (icon === "stats") return <IoStatsChartOutline size={25} {...props} />;
+  if (icon === "schedule") return <CiCalendarDate size={25} {...props} />;
+  if (icon === "news") return <IoNewspaperOutline size={25} {...props} />;
+  if (icon === "search") return <IoSearch size={20} {...props} />;
+  if (icon === "clear") return <GoXCircleFill size={18} {...props} />;
+
+  return null;
+};
