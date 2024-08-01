@@ -1,6 +1,6 @@
 "use client";
 import { AppIcon } from "@/assets/AppIcons";
-import { useSearch } from "@/context/SearchContext";
+import { useSearch } from "@/lib/context/SearchContext";
 
 import React from "react";
 
