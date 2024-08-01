@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 const { DOMParser } = require("xmldom");
 
-export async function GET(res: NextResponse, req: NextRequest) {
+export async function GET(req: NextRequest, res: NextResponse) {
   const url = "https://www.nba.com/";
   try {
     const response = await fetch(url, { cache: "no-cache" });
