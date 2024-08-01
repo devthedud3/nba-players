@@ -21,7 +21,7 @@ export default function Teams({}: Props) {
     })();
   }, []);
   if (error) return <div>{error}</div>;
-  console.log(teams);
+
   return (
     <section className="flex flex-col gap-10">
       <h5 className="text-2xl font-black">Teams</h5>
