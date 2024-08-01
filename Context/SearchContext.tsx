@@ -16,7 +16,7 @@ export const SearchContext = createContext<SearchContextProps | undefined>(
   undefined
 );
 
-export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
+export function SearchProvider({ children }: { children: React.ReactNode }) {
   const [value, setValue] = useState<string>("");
   const searchContextValues: SearchContextProps = {
     search: value,
@@ -27,7 +27,7 @@ export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </SearchContext.Provider>
   );
-};
+}
 
 export const useSearch = () => {
   const context = useContext(SearchContext);
