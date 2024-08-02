@@ -10,19 +10,56 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(body, "text/html");
 
-    const playerArticles = await doc.getElementsByTagName("img");
-    const articles: any = [];
+    const element = await doc.getElementsByTagName("div");
+    const articleElement = await doc.getElementsByTagName("li");
 
-    for (let i = 0; i < playerArticles.length; i++) {
-      const source = playerArticles[i].getAttribute("src");
-      const description = playerArticles[i].getAttribute("alt");
-      source.includes("2024") &&
-        description &&
-        articles.push({ image: source, description: description });
+    const articles: any = [];
+    const headlines: any = [];
+    const imageMap: any = {};
+
+    for (let a = 0; a < element.length; a++) {
+      const el = element[a].childNodes;
+      let o: any = {};
+      for (let b = 0; b < el.length; b++) {
+        if (el[b].tagName === "a") {
+          o.title = el[b].textContent.length > 15 && el[b].textContent;
+          o.link = el[b].getAttribute("href");
+        }
+        if (el[b].tagName === "p") {
+          o.description = el[b].textContent;
+        }
+        if (el[b].tagName === "img") {
+          const src = el[b].getAttribute("src");
+          imageMap[el[b].getAttribute("alt")] = src;
+        }
+      }
+
+      o.image = imageMap[o.title];
+      o.title && o.link && o.description && articles.push(o);
     }
 
-    console.log(articles);
-    return NextResponse.json({ articles });
+    for (let a = 0; a < articleElement.length; a++) {
+      const el = articleElement[a].childNodes;
+      for (let i = 0; i < el.length; i++) {
+        const { tagName, textContent } = el[i];
+        const href = el[i].getAttribute("href");
+        if (
+          tagName === "a" &&
+          textContent.length > 30 &&
+          href.includes("news")
+        ) {
+          const params = { headline: textContent, link: href };
+          headlines.push(params);
+        }
+      }
+    }
+    const filteredHeadlines = headlines.filter(
+      (value: any, index: any, self: any[]) =>
+        index ===
+        self.findIndex((t: any) => JSON.stringify(t) === JSON.stringify(value))
+    );
+
+    return NextResponse.json({ articles, headlines: filteredHeadlines });
   } catch (error) {
     return NextResponse.json({ error });
   }
