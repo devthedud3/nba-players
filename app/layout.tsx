@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
 import "./globals.css";
 import Header from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
 import { SearchProvider } from "@/lib/context/SearchContext";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from "@/assets/Fonts";
 
 export const metadata: Metadata = {
   title: "NBA All stats",
@@ -21,10 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} flex min-h-screen`}>
         <SearchProvider>
-          <Sidebar />
+          {/* <Sidebar /> */}
           <div className="flex-1">
             <Header />
-            {children}
+            <main className="app-container">{children}</main>
           </div>
         </SearchProvider>
       </body>
