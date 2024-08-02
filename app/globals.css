@@ -10,9 +10,40 @@
   --background: white;
 }
 
-body {
-max-width:  1770px;
+html{
+  max-width:  1670px;
+  margin: 0 auto;
+}
 
+body {
+  width: 100%;
+  background-color: rgb(240, 240, 240);
+
+}
+
+.app-container {
+  padding: 6rem 4rem;
+}
+
+.fade-effect {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.fade-effect img {
+  display: block;
+}
+
+.fade-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.642), black);
 }
 
 @layer utilities {
