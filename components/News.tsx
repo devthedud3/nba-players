@@ -3,6 +3,7 @@ import { oswald } from "@/assets/Fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { LoadingAnimation } from "./LoadingAnimation";
 
 type Props = {};
 
@@ -31,7 +32,12 @@ export default function News({}: Props) {
   return (
     <section className="flex flex-col gap-10">
       {loading ? (
-        <p>Loading News...</p>
+        <div className="grid grid-cols-5 gap-6">
+          <div className="col-span-4 h-[550px]">
+            <LoadingAnimation />
+          </div>
+          <div className="animate-pulse delay-100 h-screen bg-gray-300 col-span-1" />
+        </div>
       ) : (
         <div className="grid grid-cols-5 gap-6">
           <div className="col-span-4 space-y-6">
@@ -43,7 +49,7 @@ export default function News({}: Props) {
                       className="animation-pulse "
                       src={article.image}
                       alt={article.title}
-                      height={1500}
+                      height={1300}
                       width={1000}
                       priority
                       style={{ height: "100%" }}
@@ -79,8 +85,9 @@ export default function News({}: Props) {
                 {headlines.map((headline: any, index) => (
                   <Link
                     key={index}
-                    className="text-xs font-light"
-                    href={headline.link}
+                    className="text-xs font-light pb-2 border-b"
+                    href={`http://nba.com${headline.link}`}
+                    target="_blank"
                   >
                     {headline.headline}
                   </Link>
