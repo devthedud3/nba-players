@@ -8,7 +8,7 @@ const options = "players_history_stats_schedule_news".split("_");
 
 export const Sidebar = (props: Props) => {
   return (
-    <aside className=" container-p border">
+    <aside className=" container-p border bg-white">
       <div className="flex items-center gap-2 mt-3">
         <ShoppingBasketIcon />
         <span className="text-xl font-bold">Statistics Hub</span>
