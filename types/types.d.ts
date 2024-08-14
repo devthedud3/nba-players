@@ -9,3 +9,10 @@ interface Player {
   DOB: string;
   college: string;
 }
+
+interface Article {
+  image: string;
+  title: string;
+  description: string;
+  link: string;
+}
