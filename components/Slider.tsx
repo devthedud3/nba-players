@@ -10,17 +10,23 @@ type SlideProps = {
 
 export default function Slider({ articles }: SlideProps) {
   const [index, setIndex] = useState<number>(0);
+  const [selected, setSelected] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((p) => (p + 1) % articles.length);
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [index]);
+
+  function handleClick(n: any) {
+    setIndex(n);
+    setSelected(n);
+  }
 
   return (
-    <article className="relative bg-black w-screen lg:w-full">
-      <div className="flex justify-end overflow-hidden">
+    <article className="relative h-[50vh] lg:h-[675px] bg-black  lg:w-full flex flex-col">
+      <div className="flex-1 justify-end overflow-hidden">
         <div className="fade-effect lg:translate-x-48">
           <Image
             className="animation-pulse "
@@ -33,48 +39,62 @@ export default function Slider({ articles }: SlideProps) {
           />
         </div>
       </div>
-      <div className="absolute h-auto inset-0 container-p w-96 text-white flex flex-col justify-center gap-6">
+      <div
+        className={`lg:absolute h-auto inset-0 container-p lg:w-96 text-white flex flex-col justify-center gap-6`}
+      >
         <div className="space-y-2">
-          <h2 className={`${oswald.className} text-3xl font-black`}>
+          <h2 className={`${oswald.className} lg:text-3xl font-black`}>
             {articles[index].title.toLocaleUpperCase()}
           </h2>
-          <p className="text-xs">{articles[index].description}</p>
+          <p className="text-xs hidden lg:block">
+            {articles[index].description}
+          </p>
         </div>
         <Link
           href={`https://nba.com${articles[index].link}`}
-          className=" border border-white w-fit p-2 "
+          className=" border-2 border-white w-fit p-2 px-4 rounded-full"
           target="_blank"
         >
-          Read more
+          MORE
         </Link>
       </div>
-      <div className="transition-all duration-400 inset-0 bottom-0 flex border-inherit lg:w-full w-screen justify-between">
-        {articles.map((article: Article, keyIdx) => (
-          <div
-            key={keyIdx}
-            onClick={() => setIndex(keyIdx)}
-            className={`transition-all p-4 space-y-2 cursor-pointer ${
-              keyIdx == index ? "border-black" : "border-slate-200"
-            } w-1/${articles.length}`}
-          >
-            <div className="w-full h-1 bg-zinc-400 rounded-full">
+      <div className="lg:h-auto w-full px-4">
+        <div className="transition-all duration-400 flex border-inherit w-full justify-between">
+          {articles.map((article: Article, keyIdx) => {
+            return (
               <div
-                className={`transition-all  ${
-                  keyIdx == index ? "duration-[7s] w-full" : "duration-75 w-0"
-                } h-full bg-white rounded-full`}
-              />
-            </div>
-            <h2
-              className={`transition-opacity ${
-                oswald.className
-              } font-medium hidden lg:block text-sm text-white ${
-                keyIdx !== index && "opacity-50"
-              }`}
-            >
-              {article.title.toLocaleUpperCase()}
-            </h2>
-          </div>
-        ))}
+                key={keyIdx}
+                onClick={() => handleClick(keyIdx)}
+                className={`transition-all p-2 lg:p-4 lg:space-y-2 cursor-pointer ${
+                  keyIdx == index ? "border-black" : "border-slate-200"
+                } w-full`}
+              >
+                <div className=" bg-zinc-400 rounded-full w-full">
+                  <div
+                    className={`transition-all h-1 ${
+                      keyIdx === index
+                        ? "duration-[7s] w-full"
+                        : "duration-200 w-0"
+                    } bg-white rounded-full`}
+                  />
+                </div>
+
+                <h2
+                  className={`transition-opacity ${
+                    oswald.className
+                  } font-medium hidden lg:block text-sm text-white ${
+                    keyIdx !== index && "opacity-50"
+                  }`}
+                >
+                  {article.title.toLocaleUpperCase()}
+                </h2>
+              </div>
+            );
+          })}
+        </div>
+        <h3 className="text-white text-sm lg:hidden p-2 pb-6 ">
+          Next: {articles[(index + 1) % articles.length].title}
+        </h3>
       </div>
     </article>
   );
