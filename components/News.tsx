@@ -37,7 +37,7 @@ export default function News({}: Props) {
           <div className="col-span-4 h-[675px]">
             <LoadingAnimation />
           </div>
-          <div className="animate-pulse delay-100 bg-gray-300 col-span-1" />
+          <div className="animate-pulse delay-100 bg-gray-300 lg:col-span-1 h-screen" />
         </div>
       ) : (
         <div className="grid lg:grid-cols-5 gap-6">
