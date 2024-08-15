@@ -19,9 +19,9 @@ export default function Slider({ articles }: SlideProps) {
   }, []);
 
   return (
-    <article className="relative bg-black">
+    <article className="relative bg-black w-screen lg:w-full">
       <div className="flex justify-end overflow-hidden">
-        <div className="fade-effect translate-x-48">
+        <div className="fade-effect lg:translate-x-48">
           <Image
             className="animation-pulse "
             src={articles[index].image}
@@ -48,7 +48,7 @@ export default function Slider({ articles }: SlideProps) {
           Read more
         </Link>
       </div>
-      <div className="transition-all duration-400 inset-0 bottom-0 flex border-inherit w-full justify-between">
+      <div className="transition-all duration-400 inset-0 bottom-0 flex border-inherit lg:w-full w-screen justify-between">
         {articles.map((article: Article, keyIdx) => (
           <div
             key={keyIdx}
@@ -67,7 +67,7 @@ export default function Slider({ articles }: SlideProps) {
             <h2
               className={`transition-opacity ${
                 oswald.className
-              } font-medium text-sm text-white ${
+              } font-medium hidden lg:block text-sm text-white ${
                 keyIdx !== index && "opacity-50"
               }`}
             >
