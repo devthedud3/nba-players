@@ -33,7 +33,7 @@ export default function Teams({}: Props) {
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           {teams.map((team: any, index) => (
             <Link
-              className="transition flex p-1 items-center border-2 border-white hover:border-black rounded-lg gap-2 cursor-pointer"
+              className="transition flex p-1 items-center border-2 border-white hover:border-slate-200 rounded-lg gap-2 cursor-pointer"
               key={index}
               href={`https://nba.com/${team.name
                 .toLocaleLowerCase()
