@@ -23,7 +23,7 @@ export default function Teams({}: Props) {
   if (error) return <div>{error}</div>;
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col gap-10">
       <h5 className="text-2xl font-black border-b p-2">Teams</h5>
 
       {loading ? (
