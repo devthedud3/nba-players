@@ -45,7 +45,7 @@ const Players = () => {
           {[...Array(12)].map((_, index) => (
             <div
               key={index}
-              className="h-6 w-full animate-pulse bg-slate-100 rounded-xl"
+              className="h-6 w-full animate-pulse bg-slate-300 rounded-xl"
             />
           ))}
         </div>
