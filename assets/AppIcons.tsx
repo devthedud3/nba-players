@@ -10,7 +10,6 @@ import { FaBasketball } from "react-icons/fa6";
 export const ShoppingBasketIcon = (props: any) => {
   return (
     <svg
-      {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -35,18 +34,17 @@ export const ShoppingBasketIcon = (props: any) => {
 
 type AppIconProps = {
   icon: string;
-  props?: any;
 };
 
-export const AppIcon = ({ icon, ...props }: AppIconProps) => {
-  if (icon === "logo") return <FaBasketball size={25} {...props} />;
-  if (icon === "players") return <CiUser size={25} {...props} />;
-  if (icon === "history") return <CiTrophy size={25} {...props} />;
-  if (icon === "stats") return <IoStatsChartOutline size={25} {...props} />;
-  if (icon === "schedule") return <CiCalendarDate size={25} {...props} />;
-  if (icon === "news") return <IoNewspaperOutline size={25} {...props} />;
-  if (icon === "search") return <IoSearch size={20} {...props} />;
-  if (icon === "clear") return <GoXCircleFill size={18} {...props} />;
+export const AppIcon = ({ icon }: AppIconProps) => {
+  if (icon === "logo") return <FaBasketball size={25} />;
+  if (icon === "players") return <CiUser size={25} />;
+  if (icon === "history") return <CiTrophy size={25} />;
+  if (icon === "stats") return <IoStatsChartOutline size={25} />;
+  if (icon === "schedule") return <CiCalendarDate size={25} />;
+  if (icon === "news") return <IoNewspaperOutline size={25} />;
+  if (icon === "search") return <IoSearch size={20} />;
+  if (icon === "clear") return <GoXCircleFill size={18} />;
 
   return null;
 };
