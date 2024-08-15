@@ -17,7 +17,7 @@ export default function SearchBar({ icon }: Props) {
   }
   console.log(search);
   return (
-    <div className="flex w-96 border items-center py-2 px-2 gap-2 rounded-full bg-slate-100">
+    <div className="w-96 hidden border items-center py-2 px-2 gap-2 rounded-full bg-slate-100 lg:flex">
       {icon && <AppIcon icon="search" />}
       <input
         className="w-full outline-none bg-inherit text-sm"
