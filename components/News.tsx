@@ -33,37 +33,37 @@ export default function News({}: Props) {
   return (
     <section className="flex flex-col gap-10">
       {loading ? (
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid lg:grid-cols-5 gap-6">
           <div className="col-span-4 h-[675px]">
             <LoadingAnimation />
           </div>
           <div className="animate-pulse delay-100 bg-gray-300 col-span-1" />
         </div>
       ) : (
-        <div className="grid grid-cols-5 gap-6">
-          <div className="col-span-4 space-y-6">
+        <div className="grid lg:grid-cols-5 gap-6">
+          <div className="lg:col-span-4 space-y-6">
             <Slider articles={articles} />
           </div>
-          <div className="col-span-1 border h-auto bg-white">
-            <div className={` p-4`}>
-              <h3
-                className={`${oswald.className} font-semibold text-xl pb-2 border-b`}
-              >
-                HEADLINES
-              </h3>
-              <section className="flex flex-col space-y-4 pt-4">
-                {headlines.map((headline: any, index) => (
-                  <Link
-                    key={index}
-                    className="text-xs font-light pb-2 border-b"
-                    href={`http://nba.com${headline.link}`}
-                    target="_blank"
-                  >
-                    {headline.headline}
-                  </Link>
-                ))}
-              </section>
-            </div>
+          <div className="col-span-1 p-4 mx-4 lg:m-0 border h-auto bg-white">
+            <h3
+              className={`${oswald.className} font-semibold text-xl pb-2 border-b`}
+            >
+              HEADLINES
+            </h3>
+            <section className="flex flex-col space-y-4 pt-4">
+              {headlines.map((headline: any, index) => (
+                <Link
+                  key={index}
+                  className={`text-xs font-light ${
+                    index !== headlines.length - 1 && "pb-4 border-b"
+                  }`}
+                  href={`https://nba.com${headline.link}`}
+                  target="_blank"
+                >
+                  {headline.headline}
+                </Link>
+              ))}
+            </section>
           </div>
         </div>
       )}
