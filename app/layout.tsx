@@ -7,7 +7,7 @@ import { SearchProvider } from "@/lib/context/SearchContext";
 import { inter } from "@/assets/Fonts";
 
 export const metadata: Metadata = {
-  title: "NBA All stats",
+  title: "NBA news and stats",
   description: "Created by Corey",
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
           {/* <Sidebar /> */}
           <div className="flex-1">
             <Header />
-            <main className="app-container">{children}</main>
+            <main className="lg:p-[3rem]">{children}</main>
           </div>
         </SearchProvider>
       </body>
