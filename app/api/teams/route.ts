@@ -22,8 +22,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
           name: description.replace(" Logo", ""),
         });
     }
-
-    console.log(teams);
     return NextResponse.json({ teams });
   } catch (error) {
     return NextResponse.json({ error });
