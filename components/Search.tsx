@@ -20,8 +20,8 @@ const Search: React.FC<Props> = ({ query, setQuery }) => {
     <div className="w-full flex justify-between">
       {a.split("").map((letter, index) => (
         <p
-          className={`transition-all p-4 cursor-pointer border-b border-white hover:border-black ${
-            query === letter && "bg-slate-100"
+          className={`transition-all p-4 cursor-pointer ${
+            query === letter && "bg-black text-white"
           }`}
           key={index}
           onClick={() => handleClick(letter)}
