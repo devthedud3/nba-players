@@ -13,10 +13,12 @@ export default function Slider({ articles }: SlideProps) {
   const [selected, setSelected] = useState<number | undefined>(undefined);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((p) => (p + 1) % articles.length);
-    }, 7000);
-    return () => clearInterval(interval);
+    if (!selected) {
+      const interval = setInterval(() => {
+        setIndex((p) => (p + 1) % articles.length);
+      }, 7000);
+      return () => clearInterval(interval);
+    }
   }, [index]);
 
   function handleClick(n: any) {
@@ -29,7 +31,7 @@ export default function Slider({ articles }: SlideProps) {
       <div className="flex-1 justify-end overflow-hidden">
         <div className="fade-effect lg:translate-x-48">
           <Image
-            className="animation-pulse "
+            className="animation-pulse"
             src={articles[index].image}
             alt={articles[index].title}
             height={1300}
@@ -73,7 +75,9 @@ export default function Slider({ articles }: SlideProps) {
                   <div
                     className={`transition-all h-1 ${
                       keyIdx === index
-                        ? "duration-[7s] w-full"
+                        ? selected === undefined
+                          ? "duration-[7s] w-full"
+                          : "w-full"
                         : "duration-200 w-0"
                     } bg-white rounded-full`}
                   />
