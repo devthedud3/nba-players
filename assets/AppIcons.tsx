@@ -5,6 +5,7 @@ import {
   IoNewspaperOutline,
   IoSearch,
 } from "react-icons/io5";
+import { FaBasketball } from "react-icons/fa6";
 
 export const ShoppingBasketIcon = (props: any) => {
   return (
@@ -38,6 +39,7 @@ type AppIconProps = {
 };
 
 export const AppIcon = ({ icon, ...props }: AppIconProps) => {
+  if (icon === "logo") return <FaBasketball size={25} {...props} />;
   if (icon === "players") return <CiUser size={25} {...props} />;
   if (icon === "history") return <CiTrophy size={25} {...props} />;
   if (icon === "stats") return <IoStatsChartOutline size={25} {...props} />;
