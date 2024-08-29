@@ -53,6 +53,20 @@ body {
   ;
 }
 
+@keyframes scale-up {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.scale-animation {
+  display: inherit;
+  animation: scale-up 7000ms ease-in-out linear;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
