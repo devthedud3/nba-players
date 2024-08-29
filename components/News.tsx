@@ -44,7 +44,7 @@ export default function News({}: Props) {
           <div className="lg:col-span-4 space-y-6">
             <Slider articles={articles} />
           </div>
-          <div className="col-span-1 p-4 mx-4 lg:m-0 border h-auto bg-white">
+          <div className="col-span-1 p-4 mx-4 lg:m-0 border h-fit bg-white">
             <h3
               className={`${oswald.className} font-semibold text-xl pb-2 border-b`}
             >
