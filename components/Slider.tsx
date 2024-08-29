@@ -29,7 +29,9 @@ export default function Slider({ articles }: SlideProps) {
   return (
     <article className="relative h-[50vh] lg:h-[675px] bg-black  lg:w-full flex flex-col">
       <div className="flex-1 justify-end overflow-hidden">
-        <div className="fade-effect lg:translate-x-48">
+        <div
+          className={`fade-effect lg:translate-x-48 transition-transform scale-animation`}
+        >
           <Image
             className="animation-pulse"
             src={articles[index].image}
@@ -54,10 +56,10 @@ export default function Slider({ articles }: SlideProps) {
         </div>
         <Link
           href={`https://nba.com${articles[index].link}`}
-          className=" border-2 border-white w-fit p-2 px-4 rounded-full"
+          className=" border-2 border-white w-fit p-1 text-xs px-4 rounded-full"
           target="_blank"
         >
-          MORE
+          READ
         </Link>
       </div>
       <div className="lg:h-auto w-full px-4">
