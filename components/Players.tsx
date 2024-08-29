@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import List from "./List";
 import Search from "./Search";
+import Card from "./Card";
 
 const header = [
   "Name",
@@ -38,11 +39,13 @@ const Players = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <>
+    <section className="bg-white p-4">
+      <Card />
+      <h5 className="text-2xl font-black p-2 border-b mb-10">Players</h5>
       <Search query={query} setQuery={setQuery} />
       {loading ? (
         <div className="w-full space-y-4">
-          {[...Array(12)].map((_, index) => (
+          {[...Array(50)].map((_, index) => (
             <div
               key={index}
               className="h-6 w-full animate-pulse bg-slate-300 rounded-xl"
@@ -52,7 +55,7 @@ const Players = () => {
       ) : (
         <List headers={header} data={players} />
       )}
-    </>
+    </section>
   );
 };
 
