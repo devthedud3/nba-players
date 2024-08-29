@@ -8,7 +8,6 @@ export default function Home() {
     <div className="flex min-h-screen flex-col space-y-10 ">
       <News />
       <Teams />
-      <h1 className="text-xl font-extrabold">NBA Players</h1>
       {/* <Players /> */}
     </div>
   );
